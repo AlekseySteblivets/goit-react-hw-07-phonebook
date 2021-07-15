@@ -12,13 +12,17 @@ import {
 // import { composeWithDevTools } from "redux-devtools-extension";
 import phonebooksReducer from "./phonebooks-reducer";
 
-
+// const myMiddleware = store => next => action => {
+//     console.log('Моя прослойка!', action);
+//     next(action);
+// }
 
 const middleware = [...getDefaultMiddleware({
     serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
     }
 }),
+    // myMiddleware,
     logger,
 ];
 

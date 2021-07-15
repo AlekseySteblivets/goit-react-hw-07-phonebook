@@ -12,7 +12,7 @@ import * as phonebooksActions from './phonebooks-actions';
 // }
 
 const items = createReducer([], {
-    [phonebooksActions.addContact]: (state, { payload }) => [payload, ...state],
+    addContactSuccess: (state, { payload }) => [payload, ...state],
     [phonebooksActions.deleteContact]: (state, { payload }) => state.filter(contact =>
         contact.id !== payload),
 })
