@@ -4,7 +4,7 @@ import styles from './ContactForm.module.css';
 // import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 // import { number } from 'yargs';
-import * as phonebooksActions from '../../redux/phonebooks/phonebooks-actions';
+import * as phonebooksOperations from '../../redux/phonebooks/phonebooks-operations';
 
 // import * as actions from 'redux/contacts/contacts-actions';
 
@@ -100,7 +100,7 @@ const mapStateToProps = state => ({
     contacts: state.contacts.items,
 });
 const mapDispatchToProps = dispatch => ({
-    addContact: (name, number) => dispatch(phonebooksActions.addContact(name, number)),
+    addContact: (name, number) => dispatch(phonebooksOperations.addContact(name, number)),
 
 })
 
