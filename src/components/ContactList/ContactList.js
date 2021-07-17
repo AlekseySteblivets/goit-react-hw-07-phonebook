@@ -4,6 +4,7 @@ import styles from './ContactList.module.css';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import * as phonebookOperations from '../../redux/phonebooks/phonebooks-operations';
+import * as phonebookSelectors from '../../redux/phonebooks/phonebooks-selectors';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
     return (
@@ -31,17 +32,8 @@ ContactList.propTypes = {
     ),
 };
 
-
-const getVisibleContacts = (allContacts, filter) => {
-    const filterNormalize = filter.toLowerCase();
-
-    return allContacts.filter(contact =>
-        contact.name.toLowerCase().includes(filterNormalize),
-    );
-};
-
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
-    contacts: getVisibleContacts(items, filter),
+const mapStateToProps = (state) => ({
+    contacts: phonebookSelectors.getVisibleContacts(state),
 });
 
 

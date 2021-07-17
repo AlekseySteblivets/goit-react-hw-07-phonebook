@@ -1,11 +1,6 @@
 {
   "contacts": [
     {
-      "id": "id-2",
-      "name": "Hermione Kline",
-      "number": "443-89-12"
-    },
-    {
       "id": "id-3",
       "name": "Eden Clements",
       "number": "645-17-79"
@@ -18,7 +13,7 @@
     {
       "name": "Aleksey Steblivets",
       "number": "44444444444",
-      "id": "WgA2XV9"
+      "id": "9k_E98v"
     }
   ]
 }

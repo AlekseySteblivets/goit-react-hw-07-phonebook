@@ -5,6 +5,7 @@ import styles from './ContactForm.module.css';
 import { v4 as uuidv4 } from 'uuid';
 // import { number } from 'yargs';
 import * as phonebooksOperations from '../../redux/phonebooks/phonebooks-operations';
+import * as phonebookSelectors from '../../redux/phonebooks/phonebooks-selectors';
 
 // import * as actions from 'redux/contacts/contacts-actions';
 
@@ -97,7 +98,7 @@ class ContactForm extends Component {
 
 
 const mapStateToProps = state => ({
-    contacts: state.contacts.items,
+    contacts: phonebookSelectors.getItems(state),
 });
 const mapDispatchToProps = dispatch => ({
     addContact: (name, number) => dispatch(phonebooksOperations.addContact(name, number)),

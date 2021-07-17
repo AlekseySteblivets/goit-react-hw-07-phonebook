@@ -6,6 +6,7 @@ import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
 import * as phonebookOperations from './redux/phonebooks/phonebooks-operations';
+import * as phonebookSelectors from './redux/phonebooks/phonebooks-selectors';
 
 class App extends Component {
   state = {
@@ -87,7 +88,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  isloadingContacts: state.contacts.loading,
+  isloadingContacts: phonebookSelectors.getIsloadingContacts(state),
 })
 
 const mapDispatchToProps = dispatch => ({
