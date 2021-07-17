@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import ContactForm from './components/ContactForm';
-// import { v4 as uuidv4 } from 'uuid';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
-import * as phonebookOperations from './redux/phonebooks/phonebooks-operations';
-import * as phonebookSelectors from './redux/phonebooks/phonebooks-selectors';
+import { getIsloadingContacts, fetchContact } from './redux/phonebooks';
+// import * as phonebookOperations from './redux/phonebooks/phonebooks-operations';
+// import * as phonebookSelectors from './redux/phonebooks/phonebooks-selectors';
 
 class App extends Component {
   state = {
@@ -41,11 +41,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  isloadingContacts: phonebookSelectors.getIsloadingContacts(state),
+  isloadingContacts: getIsloadingContacts(state),
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchContact: () => dispatch(phonebookOperations.fetchContact())
+  fetchContact: () => dispatch(fetchContact())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import styles from './ContactForm.module.css';
 import { v4 as uuidv4 } from 'uuid';
-import * as phonebooksOperations from '../../redux/phonebooks/phonebooks-operations';
-import * as phonebookSelectors from '../../redux/phonebooks/phonebooks-selectors';
+import { getItems, addContact } from '../../redux/phonebooks';
+// import * as phonebooksOperations from '../../redux/phonebooks/phonebooks-operations';
+// import * as phonebookSelectors from '../../redux/phonebooks/phonebooks-selectors';
 
 class ContactForm extends Component {
     inputId = uuidv4();
@@ -77,10 +78,10 @@ class ContactForm extends Component {
 
 
 const mapStateToProps = state => ({
-    contacts: phonebookSelectors.getItems(state),
+    contacts: getItems(state),
 });
 const mapDispatchToProps = dispatch => ({
-    addContact: (name, number) => dispatch(phonebooksOperations.addContact(name, number)),
+    addContact: (name, number) => dispatch(addContact(name, number)),
 
 })
 

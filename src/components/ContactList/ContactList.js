@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import styles from './ContactList.module.css';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import * as phonebookOperations from '../../redux/phonebooks/phonebooks-operations';
-import * as phonebookSelectors from '../../redux/phonebooks/phonebooks-selectors';
+import { getVisibleContacts, deleteContact } from '../../redux/phonebooks';
+// import * as phonebookOperations from '../../redux/phonebooks/phonebooks-operations';
+// import * as phonebookSelectors from '../../redux/phonebooks/phonebooks-selectors';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
     return (
@@ -32,12 +33,12 @@ ContactList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-    contacts: phonebookSelectors.getVisibleContacts(state),
+    contacts: getVisibleContacts(state),
 });
 
 
 const mapDispatchToProps = dispatch => ({
-    onDeleteContact: id => dispatch(phonebookOperations.deleteContact(id)),
+    onDeleteContact: id => dispatch(deleteContact(id)),
 
 });
 
