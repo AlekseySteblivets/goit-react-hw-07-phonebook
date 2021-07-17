@@ -6,16 +6,6 @@ export const getFilter = state => state.contacts.filter;
 
 export const getItems = state => state.contacts.items;
 
-// export const getVisibleContacts = state => {
-//     const allContacts = getItems(state);
-//     const filter = getFilter(state);
-//     const filterNormalize = filter.toLowerCase();
-
-//     return allContacts.filter(contact =>
-//         contact.name.toLowerCase().includes(filterNormalize),
-//     );
-// }
-
 export const getVisibleContacts = createSelector(
     [getItems, getFilter],
     (allContacts, filter) => {
@@ -26,3 +16,14 @@ export const getVisibleContacts = createSelector(
 
     }
 )
+
+
+// export const getVisibleContacts = state => {
+//     const allContacts = getItems(state);
+//     const filter = getFilter(state);
+//     const filterNormalize = filter.toLowerCase();
+
+//     return allContacts.filter(contact =>
+//         contact.name.toLowerCase().includes(filterNormalize),
+//     );
+// }

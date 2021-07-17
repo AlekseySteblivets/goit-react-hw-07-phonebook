@@ -9,7 +9,6 @@ import * as phonebookSelectors from '../../redux/phonebooks/phonebooks-selectors
 const ContactList = ({ contacts, onDeleteContact }) => {
     return (
         <div className="Contact-container">
-            {/* <h2 className="Contact-container__title">Contacts</h2> */}
             <ul >
                 {contacts.map(contact => (
                     <li className={styles.contactList} key={uuidv4()}>{contact.name} : {contact.number}
@@ -39,23 +38,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
     onDeleteContact: id => dispatch(phonebookOperations.deleteContact(id)),
-    // contacts: () => null,
 
 });
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
-
-
-
-// const getVisibleContacts = (allContacts, filter) => {
-//     const filterNormalize = filter.toLowerCase();
-
-//     return allContacts.filter(contact =>
-//         contact.name.toLowerCase().includes(filterNormalize),
-//     );
-// };
-
-// const mapStateToProps = ({ contacts: { items, filter } }) => ({
-//     contactsData: getVisibleContacts(items, filter),
-// });

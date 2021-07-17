@@ -23,54 +23,7 @@ class App extends Component {
     this.props.fetchContact();
   }
 
-  // componentDidMount() {
-  //   // console.log('пришел ДИДМАУНТ');
-  //   const contacts = localStorage.getItem('myLocalStorageContacts');
-  //   const parsedContacts = JSON.parse(contacts);
-  //   if (parsedContacts) {
-  //     this.setState({ contacts: parsedContacts })
-  //   }
-  //   console.log(parsedContacts);
-  // }
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.contacts !== prevState.contacts) {
-  //     localStorage.setItem('myLocalStorageContacts', JSON.stringify(this.state.contacts))
-  //   }
-  // }
-
-  // changeFilter = e => this.setState({ filter: e.currentTarget.value });
-
-  // getVisibleContacts = () => {
-  //   const normalizedFilter = this.state.filter.toLowerCase();
-  //   return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter),
-  //   );
-  // };
-
-  // addContact = (name, number) => {
-  //   const idContact = uuidv4();
-  //   const nameFromInput = { name: name, number: number, id: idContact };
-  //   const findContact = this.state.contacts.find(contact => contact.name === name && contact.number === number);
-
-
-  //   if (findContact) {
-  //     alert(`${name} is already in contacts!`);
-  //     return;
-  //   }
-
-  //   this.setState(prevState => ({
-  //     contacts: [nameFromInput, ...prevState.contacts],
-  //   }));
-  // };
-
-  // deleteContact = (idFromContact) => {
-  //   this.setState(prevState => ({
-  //     contacts: prevState.contacts.filter(contact =>
-  //       contact.id !== idFromContact),
-  //   }))
-  // }
-
   render() {
-    // const visibleContacts = this.getVisibleContacts();
     return (
       <div>
         <h1>Phonebook</h1>
@@ -96,7 +49,3 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-{/* <ContactForm addContact={this.addContact} /> */ }
-{/* <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact} /> */ }
-{/* <Filter value={this.state.filter} оnChange={this.changeFilter} /> */ }

@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import styles from './ContactForm.module.css';
-// import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-// import { number } from 'yargs';
 import * as phonebooksOperations from '../../redux/phonebooks/phonebooks-operations';
 import * as phonebookSelectors from '../../redux/phonebooks/phonebooks-selectors';
-
-// import * as actions from 'redux/contacts/contacts-actions';
 
 class ContactForm extends Component {
     inputId = uuidv4();
@@ -24,13 +20,7 @@ class ContactForm extends Component {
     };
     handleSubmit = evt => {
         evt.preventDefault();
-        // if(this.state.name)
-        // this.props.addContact(this.state.name, this.state.number);
-        // this.setState({ name: "", number: "" });
-
-
         const findContact = this.props.contacts.find(contact => contact.name === this.state.name && contact.number === this.state.number);
-
 
         if (findContact) {
             alert(`${this.state.name} is already in contacts!`);
@@ -38,18 +28,12 @@ class ContactForm extends Component {
             return;
         }
         this.props.addContact(this.state.name, this.state.number);
-        // this.setState({ name: "", number: "" });
         this.reset();
     }
     reset = () => {
         this.setState({ name: '', number: '' });
-        //   this.setState(prevState => ({
-        //     contacts: [nameFromInput, ...prevState.contacts],
-        //   }));
-
-
-
     };
+
     render() {
         return (
 
@@ -80,17 +64,12 @@ class ContactForm extends Component {
                             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
                             value={this.state.number}
                             onChange={this.handleInputChange}
-                            // id={this.inputId}
                             required
                         />
                     </label>
 
-                    {/* <Filter value = {this.state.filter} оnChange = {this.changeFilter} /> */}
-
                     <button type="submit" className="Container-form__btn">Add Contact</button>
                 </form>
-
-                {/* <ContactList contacts={visibleContacts}/> */}
             </div>
         )
     };
