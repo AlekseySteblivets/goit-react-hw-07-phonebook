@@ -3,12 +3,19 @@ import * as phonebooksActions from './phonebooks-actions';
 
 axios.defaults.baseURL = 'http://localhost:4040';
 
-export const fetchContact = () => dispatch => {
+export const fetchContact = () => async dispatch => {
     dispatch(phonebooksActions.fetchContactRequest());
-    axios
-        .get('./contacts')
-        .then(({ data }) => dispatch(phonebooksActions.fetchContactSuccess(data)))
-        .catch(error => dispatch(phonebooksActions.fetchContactError(error)));
+
+    try {
+        const { data } = await axios.get('./contacts');
+        dispatch(phonebooksActions.fetchContactSuccess(data));
+    } catch (error) {
+        dispatch(phonebooksActions.fetchContactError(error));
+    }
+    // axios
+    //     .get('./contacts')
+    //     .then(({ data }) => dispatch(phonebooksActions.fetchContactSuccess(data)))
+    //     .catch(error => dispatch(phonebooksActions.fetchContactError(error)));
 }
 
 export const addContact = (name, number) => dispatch => {
