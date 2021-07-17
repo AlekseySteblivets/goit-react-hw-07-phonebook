@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import ContactForm from './components/ContactForm';
 // import { v4 as uuidv4 } from 'uuid';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
-
+import * as phonebookOperations from './redux/phonebooks/phonebooks-operations';
 
 class App extends Component {
   state = {
@@ -15,6 +16,10 @@ class App extends Component {
     //   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     // ],
     // filter: '',
+  }
+
+  componentDidMount() {
+    this.props.fetchContact();
   }
 
   // componentDidMount() {
@@ -72,14 +77,24 @@ class App extends Component {
 
         <h2>Contacts</h2>
         <Filter />
+        {this.props.isloadingContacts && <h1>loading...</h1>}
         <ContactList />
+
       </div>
     )
   }
 
 }
 
-export default App;
+const mapStateToProps = state => ({
+  isloadingContacts: state.contacts.loading,
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchContact: () => dispatch(phonebookOperations.fetchContact())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 {/* <ContactForm addContact={this.addContact} /> */ }
 {/* <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact} /> */ }

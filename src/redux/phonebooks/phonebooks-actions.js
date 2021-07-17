@@ -2,6 +2,12 @@
 
 import { createAction } from '@reduxjs/toolkit';
 
+export const fetchContactRequest = createAction('phonebooks/fetchContactRequest');
+export const fetchContactSuccess = createAction('phonebooks/fetchContactSuccess');
+export const fetchContactError = createAction('phonebooks/fetchContactError');
+
+
+
 export const addContactRequest = createAction('phonebooks/addContactRequest');
 export const addContactSuccess = createAction('phonebooks/addContactSuccess');
 export const addContactError = createAction('phonebooks/addContactError');
